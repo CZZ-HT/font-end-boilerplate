@@ -2,10 +2,12 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 //console.log(process.env.NODE_ENV)
 module.exports = {
 	entry: {
-		main:[__dirname + "/app/main.jsx",__dirname+"/app/main.css"]
+		main:[__dirname + "/app/main.jsx",__dirname+"/app/main.css"],
+		vendor: ["react", "react-dom"],
 	},
 	module: {
 		loaders: [{
@@ -27,6 +29,9 @@ module.exports = {
 	plugins: [
     	new webpack.DefinePlugin({
             'process.env': {NODE_ENV: JSON.stringify('production')}
+        }),
+        new CommonsChunkPlugin({
+        	name:'vendor'
         }),
 	    new webpack.optimize.OccurenceOrderPlugin(true),
     	new webpack.optimize.UglifyJsPlugin({
