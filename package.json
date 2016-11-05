@@ -26,7 +26,8 @@
     "postcss-loader": "^1.1.0",
     "react-transform-hmr": "^1.0.4",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.14.1"
   },
   "repository":"https://github.com/bjtqti/autobuild-font-end-boilerplate.git",
   "dependencies": {

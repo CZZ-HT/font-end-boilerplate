@@ -4,12 +4,6 @@ var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 //console.log(process.env.NODE_ENV)
 module.exports = {
-	devServer: {
-		contentBase: "./public",
-		colors: true,
-		historyApiFallback: true,
-		inline: true
-	},
 	entry: {
 		main:[__dirname + "/app/main.jsx",__dirname+"/app/main.css"]
 	},
@@ -20,10 +14,10 @@ module.exports = {
 		}, {
 			test: /\.js[x]?$/,
 			exclude: /node_modules/,
-			loader: 'babel'
-			// query: {
-			// 	presets: ['es2015', 'react']
-			// }
+			loader: 'babel',
+			query: {
+				presets: ['es2015', 'react']
+			}
 		}, {
 			test: /\.css$/,
 			loader: ExtractTextPlugin.extract('style', 'css!postcss')
@@ -34,11 +28,19 @@ module.exports = {
     	new webpack.DefinePlugin({
             'process.env': {NODE_ENV: JSON.stringify('production')}
         }),
-	    new webpack.optimize.OccurenceOrderPlugin(),
-    	new webpack.optimize.UglifyJsPlugin(),
-    	new webpack.BannerPlugin("Copyright Flying xxx inc."),
+	    new webpack.optimize.OccurenceOrderPlugin(true),
+    	new webpack.optimize.UglifyJsPlugin({
+    		compress: {
+                warnings: false
+            },
+            output: {
+              comments: false
+            },
+            sourceMap: false
+    	}),
+    	//new webpack.BannerPlugin("Copyright Flying xxx inc."),
     	new HtmlWebpackPlugin({
-	      template: __dirname + "/app/index.tmpl.html"
+	      	template: __dirname + "/app/index.tmpl.html"
 	    }),
 	    new ExtractTextPlugin("[name]-[hash:6].css")
   	],

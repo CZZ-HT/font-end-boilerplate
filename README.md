@@ -7,12 +7,6 @@ Quick start develop your webapp with react,less,etc.
 - run`npm start` to get develop server start(eg:webpack-dev-server)
 - run`npm build ` to build files to the website root
 
-Deploy to production environment
-===
-- run`npm install --production`
-- run`npm install pm2 -g`(more instructions in [pm2 documention](https://github.com/Unitech/PM2))
-- run`pm2 start app.js --name <Project Name>` to deploy
-
 Directory structure
 ===
 
