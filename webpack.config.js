@@ -15,13 +15,10 @@ module.exports = {
 		port:3000
 	},
 	entry: {
-		member:["./app/member/main.jsx","./app/member/main.css"]
+		member:["./app/member/main.jsx","./app/member/main.less"]
 	},
 	module: {
 		loaders: [{
-			test: /\.json$/,
-			loader: "json"
-		}, {
 			test: /\.js[x]?$/,
 			exclude: /node_modules/,
 			loader: 'babel',
@@ -29,8 +26,8 @@ module.exports = {
 				presets: ['es2015', 'react']
 			}
 		}, {
-			test: /\.css$/,
-			loader: ExtractTextPlugin.extract('style', 'css!postcss')
+			test: /\.css|less$/,
+			loader: ExtractTextPlugin.extract('style', 'css!postcss!less')
 		}]
 	},
 	postcss:[autoprefixer()],

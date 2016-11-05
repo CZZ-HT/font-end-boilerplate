@@ -4,7 +4,7 @@ import App from './app.jsx';
 
 function bootstrap(){
     ReactDOM.render(<App />,document.getElementById('root'));
-    require('../js/responsive.js');
+    require('../common/responsive.js');
 }
 
 if(typeof window.addEventListener){

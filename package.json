@@ -23,13 +23,15 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.24.1",
     "json-loader": "^0.5.4",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
     "postcss-loader": "^1.1.0",
     "react-transform-hmr": "^1.0.4",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.14.1"
   },
-  "repository":"https://github.com/bjtqti/autobuild-font-end-boilerplate.git",
+  "repository": "https://github.com/bjtqti/autobuild-font-end-boilerplate.git",
   "dependencies": {
     "react": "^15.3.2",
     "react-dom": "^15.3.2"

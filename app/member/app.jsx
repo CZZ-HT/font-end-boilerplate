@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Footer from '../common/footer.jsx';
+
 class App extends Component{
 	constructor(props){
         super(props);
