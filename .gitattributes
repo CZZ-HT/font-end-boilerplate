@@ -1,0 +1,2 @@
+*.jsx linguist-language=js
+*.less linguist-language=css
