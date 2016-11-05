@@ -6,7 +6,7 @@ var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 //console.log(process.env.NODE_ENV)
 module.exports = {
 	entry: {
-		main:[__dirname + "/app/main.jsx",__dirname+"/app/main.css"],
+		member:["./app/member/main.jsx","./app/member/main.css"],
 		vendor: ["react", "react-dom"],
 	},
 	module: {
@@ -45,12 +45,12 @@ module.exports = {
     	}),
     	//new webpack.BannerPlugin("Copyright Flying xxx inc."),
     	new HtmlWebpackPlugin({
-	      	template: __dirname + "/app/index.tmpl.html"
+	      	template: __dirname + "/app/member/index.html"
 	    }),
-	    new ExtractTextPlugin("[name]-[hash:6].css")
+	    new ExtractTextPlugin("css/[name]-[hash:6].css")
   	],
 	output: {
-		path: __dirname + "/public",
-		filename: "[name]-[hash:6].js"
+		path: __dirname + "/public/",
+		filename: "js/[name]-[hash:6].js"
 	}
 }

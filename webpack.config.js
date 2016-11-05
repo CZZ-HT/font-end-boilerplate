@@ -3,10 +3,10 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var autoprefixer = require('autoprefixer');
+
 module.exports = {
 	devtool: 'eval-source-map',
 	devServer: {
-		//publicPath:"http://localhost:3000/public",
 		contentBase: "./public",
 		colors: true,
 		historyApiFallback: true,
@@ -15,7 +15,7 @@ module.exports = {
 		port:3000
 	},
 	entry: {
-		main:[__dirname + "/app/main.jsx",__dirname+"/app/main.css"]
+		member:["./app/member/main.jsx","./app/member/main.css"]
 	},
 	module: {
 		loaders: [{
@@ -36,13 +36,13 @@ module.exports = {
 	postcss:[autoprefixer()],
 	plugins: [
     	new HtmlWebpackPlugin({
-	      template: __dirname + "/app/index.tmpl.html"
+	      template: __dirname + "/app/member/index.html"
 	    }),
 	    new webpack.HotModuleReplacementPlugin(),
-	    new ExtractTextPlugin("[name]-[hash:6].css")
+	    new ExtractTextPlugin("/css/[name]-[hash:6].css")
   	],
 	output: {
-		path: __dirname + "/public",
+		path: __dirname + "/public/js/",
 		filename: "[name]-[hash:6].js"
 	}
 }
