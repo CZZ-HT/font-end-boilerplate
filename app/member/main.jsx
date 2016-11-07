@@ -11,7 +11,3 @@ if(typeof window.addEventListener){
 }else{
     window.attachEvent('onload',bootstrap);
 }
-
-window.onload = function(){
-	require('../common/responsive.js');
-}
