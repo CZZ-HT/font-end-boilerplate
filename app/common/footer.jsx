@@ -1,25 +1,46 @@
 'use strict';
 import React, {Component} from 'react';
-
+import ReactDOM from "react-dom";
+import filter from './tools.js';
 class Footer extends Component{
 	constructor(props){
         super(props);
-        this.state = {
-            maskActive:false
+    }
+    componentDidMount(){
+        let foot = ReactDOM.findDOMNode(this),
+            items = foot.querySelectorAll('a'),
+            sub = filter(num),
+            num = 2; //test 
+        if(sub){
+            let dm = document.createElement('em');
+            dm.innerText=sub;
+            items[2].appendChild(dm);
         }
+    }
+    renderItem(){
+        const nav = ['首页','分类','购物车','我的'];
+        const {activeIndex} = this.props;
+        return nav.map((item,i)=>{
+            let hovered= activeIndex === i ? 'active':null;
+            return (
+                <li key={'nav-'+i}>
+                    <a href="javascript:;" className={hovered}><i></i>{item}</a>
+                </li>
+            )
+        })
     }
   	render() {
 	    return (
 	    	<footer className="bottom-nav">
-            <ul>
-                <li><a href="#"><i></i>首页</a></li>
-                <li><a href="#"><i></i>分类</a></li>
-                <li><a href="#"><i></i>购物车<em>99+</em></a></li>
-                <li><a className="active" href="#"><i></i>我的</a></li>
-            </ul>
-        </footer>
+                <ul>
+                    {this.renderItem()}
+                </ul>
+            </footer>
 	    );
   }
 }
 
-export default Footer
+Footer.defaultProps = {
+    activeIndex:0
+}
+export default Footer;
