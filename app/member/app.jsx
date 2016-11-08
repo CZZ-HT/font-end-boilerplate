@@ -4,8 +4,9 @@ import Navi from './components/nav.jsx';
 import List from './components/list.jsx';
 import Footer from '../common/footer.jsx';
 require('../common/responsive.js');
+
 class App extends Component{
-	constructor(props){
+	  constructor(props){
         super(props);
     }
   	render() {
