@@ -24,7 +24,7 @@ class App extends Component{
             </div>
             <Navi />
             <List />
-            <Footer />
+            <Footer activeIndex={3}/>
         </div>
 	    );
   }
