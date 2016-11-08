@@ -1,13 +1,6 @@
 'use strict';  
 import React, {Component} from 'react';
-
-const filter=(num)=>{
-    let rs = '';
-    if(num&&num>0){
-        rs = num > 99 ? '99+':num;
-    }
-    return rs ? <em>{rs}</em> : '';
-}
+import filter from '../../common/tools.js';
 
 class List extends Component{
     constructor(props){
@@ -15,9 +8,11 @@ class List extends Component{
     }
     renderList(data){
         return data.map((item,i)=>{
+            let num = filter(item.num);
+            num = num ? <em>{num}</em>:null;
             return (
                 <li key={'item-'+i}>
-                    <a href={item.url}><i></i>{item.name}{filter(item.num)}</a>
+                <a href={item.url}><i></i>{item.name}{num}</a>
                 </li>
             )
         })
