@@ -3,7 +3,32 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
-//console.log(process.env.NODE_ENV)
+var plugins = [
+	    new webpack.DefinePlugin({
+            'process.env': {NODE_ENV: JSON.stringify('production')}
+        }),
+        new CommonsChunkPlugin({
+        	name:'vendor'
+        }),
+	    new webpack.optimize.OccurenceOrderPlugin(true),
+    	new webpack.optimize.UglifyJsPlugin({
+    		compress: {
+                warnings: false
+            },
+            output: {
+              comments: false
+            },
+            sourceMap: false
+    	}),
+    	//new webpack.BannerPlugin("Copyright Flying xxx inc."),
+	    new ExtractTextPlugin("css/[name]-[hash:6].css")
+  	];
+["/app/member/index.html"].forEach(function(item){
+	plugins.push(new HtmlWebpackPlugin({
+      	template: __dirname + item
+    }))
+});
+
 module.exports = {
 	entry: {
 		member:["./app/member/main.jsx","./app/member/main.less"],
@@ -23,29 +48,7 @@ module.exports = {
 		}]
 	},
 	postcss:[autoprefixer()],
-	plugins: [
-    	new webpack.DefinePlugin({
-            'process.env': {NODE_ENV: JSON.stringify('production')}
-        }),
-        new CommonsChunkPlugin({
-        	name:'vendor'
-        }),
-	    new webpack.optimize.OccurenceOrderPlugin(true),
-    	new webpack.optimize.UglifyJsPlugin({
-    		compress: {
-                warnings: false
-            },
-            output: {
-              comments: false
-            },
-            sourceMap: false
-    	}),
-    	//new webpack.BannerPlugin("Copyright Flying xxx inc."),
-    	new HtmlWebpackPlugin({
-	      	template: __dirname + "/app/member/index.html"
-	    }),
-	    new ExtractTextPlugin("css/[name]-[hash:6].css")
-  	],
+	plugins: plugins,
 	output: {
 		path: __dirname + "/public/",
 		filename: "js/[name]-[hash:6].js"

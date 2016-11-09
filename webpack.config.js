@@ -3,7 +3,16 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var autoprefixer = require('autoprefixer');
-
+console.log(__dirname)
+var plugins = [
+	    new webpack.HotModuleReplacementPlugin(),
+	    new ExtractTextPlugin("/css/[name]-[hash:6].css")
+  	];
+["/app/member/index.html"].forEach(function(item){
+	plugins.push(new HtmlWebpackPlugin({
+      	template: __dirname + item
+    }))
+});
 module.exports = {
 	devtool: 'eval-source-map',
 	devServer: {
@@ -31,13 +40,7 @@ module.exports = {
 		}]
 	},
 	postcss:[autoprefixer()],
-	plugins: [
-    	new HtmlWebpackPlugin({
-	      template: __dirname + "/app/member/index.html"
-	    }),
-	    new webpack.HotModuleReplacementPlugin(),
-	    new ExtractTextPlugin("/css/[name]-[hash:6].css")
-  	],
+	plugins: plugins,
 	output: {
 		path: __dirname + "/public/js/",
 		filename: "[name]-[hash:6].js"
