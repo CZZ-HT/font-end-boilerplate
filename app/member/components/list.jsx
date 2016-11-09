@@ -1,5 +1,6 @@
 'use strict';  
 import React, {Component} from 'react';
+
 const data = [
     {id:0,name:"我的收藏",icon:"images/icon_star_03.png"},
     {id:1,name:"我的优惠券",icon:"images/icon_coupon_06.png"},

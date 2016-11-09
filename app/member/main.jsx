@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import App from './app.jsx';
+require('../common/responsive.js');
 
 function bootstrap(){
     ReactDOM.render(<App />,document.getElementById('root'));
