@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var autoprefixer = require('autoprefixer');
-console.log(__dirname)
+ 
 var plugins = [
 	    new webpack.HotModuleReplacementPlugin(),
 	    new ExtractTextPlugin("/css/[name]-[hash:6].css")
