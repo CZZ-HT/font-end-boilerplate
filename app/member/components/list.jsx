@@ -1,7 +1,7 @@
 'use strict';  
 import React, {Component} from 'react';
-import { connect } from 'react-redux'
- 
+import { connect } from 'react-redux';
+import {addtodo} from '../actions.jsx';
  
 
 const data = [
@@ -21,16 +21,17 @@ class List extends Component{
         console.log(33);
         console.log(this.props,this.state)
     }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.id !== this.props.id) {
+          const { dispatch, text } = nextProps
+          console.log(`只响应一次哦:${text}`)
+        }
+    }
     handleClick(id){
         //console.log(data[id]);
         //alert(data[id].name);
         let sid = this.state.id + id;
-        this.props.dispatch({ 
-            type: 'ADD_TODO',
-            id:sid,
-            text:'some test '+sid ,
-            completed:true
-        });
+        this.props.dispatch(addtodo(sid));
         this.setState({
             id:sid
         })
