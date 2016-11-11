@@ -30,11 +30,10 @@ class List extends Component{
     handleClick(id){
         //console.log(data[id]);
         //alert(data[id].name);
-        let sid = this.state.id + id;
-        this.props.dispatch(addtodo(sid));
+        this.props.dispatch(addtodo(id));
         this.setState({
-            id:sid
-        })
+            id:id
+        });
     }
     renderList(){
         return data.map((item,i)=>{
@@ -48,7 +47,7 @@ class List extends Component{
         })
     }
     render() {
-      console.log(this.props)
+      //console.log(this.props)
         return (
             <ul className="menu-list">
                 <li>{this.props.text}</li>
