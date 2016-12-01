@@ -23,9 +23,9 @@ module.exports = {
 			test:/\.html/,
 			loader:'html-loader'
 		},{
-            test: /\.(png|jpg)$/,
+            test: /\.(png|jpg|gif|svg|woff|ttf|eot)$/,
             exclude: [node_modules_dir],
-            loader: 'url?limit=25000'
+            loader: 'url?limit=20480&name=images/[name].[ext]'
         }]
 	},
 	devtool: 'eval-source-map',

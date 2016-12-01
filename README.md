@@ -18,6 +18,8 @@ Directory structure
 assets/
     |-- css/ #css file
     |-- js/ #js file
+    |-- images /#images
+    |-- index.html
 src/
     |-- css/      #stylus file
     |-- images/

@@ -26,9 +26,9 @@ module.exports = {
 		      minimize: false
 		    }
 		},{
-            test: /\.(png|jpg)$/,
+            test: /\.(png|jpg|gif|svg|woff|ttf|eot)$/,
             exclude: [node_modules_dir],
-            loader: 'url?limit=1000'
+            loader: 'url?limit=20480&name=images/[name].[ext]'
         }]
 	},
 	output: {
@@ -36,6 +36,9 @@ module.exports = {
 		publicPath:"/assets/",
 		filename: "js/[name].min.js?v=[hash:6]"
 	},
+	resolve: {
+        extensions: ["", ".js", ".json", ".es6"]
+    },
 	plugins: [
 		new webpack.DefinePlugin({
             'process.env': {NODE_ENV: JSON.stringify('production')}
