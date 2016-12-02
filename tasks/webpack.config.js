@@ -35,7 +35,7 @@ module.exports = {
 		filename: "js/[name].js?v=[hash:6]"
 	},
 	plugins: [
-	    new webpack.HotModuleReplacementPlugin(),
+	    //new webpack.HotModuleReplacementPlugin(),
 	    new ExtractTextPlugin("css/[name].css?v=[hash:6]"),
 	    new HtmlWebpackPlugin({
 	      	chunks: ['index'],

@@ -54,7 +54,6 @@ module.exports = {
             },
             sourceMap: false
         }),
-	    new webpack.HotModuleReplacementPlugin(),
 	    new ExtractTextPlugin("css/[name].min.css?v=[hash:6]"),
 	    new HtmlWebpackPlugin({
 	      	chunks: ['index'],
