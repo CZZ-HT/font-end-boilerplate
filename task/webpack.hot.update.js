@@ -35,7 +35,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, "../build"),
         filename: "[name]/[name].js",
-        publicPath: '/build/'
+        publicPath: 'http://127.0.0.1:8080/build/'
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(true),

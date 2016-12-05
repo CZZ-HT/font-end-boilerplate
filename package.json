@@ -4,7 +4,7 @@
   "description": "Webpack Sample Project",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./task/webpack.hot.update.js --content-base client --hot --inline",
+    "start": "webpack-dev-server --config ./task/webpack.hot.update.js --inline --hot --host 0.0.0.0 --content-base ./client",
     "build": "webpack --config ./task/webpack.production.js"
   },
   "keywords": [
