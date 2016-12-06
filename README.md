@@ -9,24 +9,26 @@
 - run`npm run start` to get develop server start
 - run`npm run build` to release resource to html
 
- 
+
 
 Directory structure
 ===
 
 ```sh
-assets/
-    |-- css/ #css file
-    |-- js/ #js file
-    |-- images /#images
-    |-- index.html
-src/
-    |-- css/      #stylus file
-    |-- images/
-    |-- js/     #es6 files
-    |-- index.html 
+build/
+    |-- index/
+            |-- index.css
+            |-- index.js
+    |-- other/
+            |--other.css
+            |--other.js
+client/
+    |-- common/      #css and js file
+    |-- images/      # resource
+    |-- index/       #index page entry
+    |-- other/      # ... other page entry
 tasks/
-    |-- webpack.config.js/ #webpack config
+    |-- webpack.hot.update.js/ #webpack hmr config
     |-- webpack.production.config.js/        #webpack config for production
 .babelrc  #for babel config
 package.json # npm config
@@ -35,3 +37,7 @@ package.json # npm config
 Tips
 ===
 本教程假设你已经安装了node环境,推荐版本为v4.6.2
+
+npm install --save-dev autoprefixer-loader babel-core babel-loader babel-preset-es2015 css-loader extract-text-webpack-plugin file-loader style-loader stylus-loader webpack-dev-server webpack
+
+npm install --save jquery
