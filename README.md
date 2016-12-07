@@ -1,43 +1,53 @@
-# autobuild-fontend-boilerplate
-前端自动化构建模版
+#Frontend Scaffold
 
+yet another new efficient and painless scaffold for frontend develop
 
-
-快速度开始
+Start to work
 ===
-- run`npm install`
-- run`npm run start` to get develop server start
-- run`npm run build` to release resource to html
 
+1. clone to your local disk `git clone https://github.com/bjtqti/font-end-boilerplate`
+2. run `npm install`
+3. run `npm start` to start,just simple and clean
 
+Release to publish
+===
 
-Directory structure
+1. run `npm run build`
+2. check your all the pages and related css,jss in the "dist" directory
+
+Directory Structure
 ===
 
 ```sh
-build/
-    |-- index/
-            |-- index.css
-            |-- index.js
-    |-- other/
-            |--other.css
-            |--other.js
-client/
-    |-- common/      #css and js file
-    |-- images/      # resource
-    |-- index/       #index page entry
-    |-- other/      # ... other page entry
-tasks/
-    |-- webpack.hot.update.js/ #webpack hmr config
-    |-- webpack.production.config.js/        #webpack config for production
-.babelrc  #for babel config
-package.json # npm config
+src/
+    |-- vendor/ #third party libraries like 'jquery'
+    |-- asset/ #images,fonts and so on
+    |-- bundle/
+        |-- common/ #css and js in common use
+        |-- index/ #index page's bundle
+            |-- script/ #partial js of index page
+            |-- stylesheet/ #partial css of index page
+            |-- index.js #entry js
+            |-- index.css #entry css
+        |-- .../  #more your own page
+    |-- page/ #page's html
+dist/
+    |-- images/
+    |-- css/#dist css come here
+    |-- js #dist js come here
+    |-- common # common js 
+    |--index.html #dist index.html
+    |-- .../ #more dist pages
+task/
+    |-- config/
+        |-- page.json #define page's path and other setup
+        |-- vendor.json #define third party libraries
+    |-- environment.js  #define page build's env variables
+    |-- vendor-css.js   #third party library's css compile
+    |-- webpack-inject.js #inject compiled js and css into pages
+    |-- webpack.develop.js #compile source code and vendors for develop
+    |-- webpack.production.js #compile source code and vendors for production
+    |-- webpack.hot-update.js #compile source code and vendors for develop in HMR
+webpack.config.js # 
 ```
 
-Tips
-===
-本教程假设你已经安装了node环境,推荐版本为v4.6.2
-
-npm install --save-dev autoprefixer-loader babel-core babel-loader babel-preset-es2015 css-loader extract-text-webpack-plugin file-loader style-loader stylus-loader webpack-dev-server webpack
-
-npm install --save jquery
