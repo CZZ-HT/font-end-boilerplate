@@ -3,16 +3,15 @@ var path = require('path');
 var webpack = require('webpack');
 var node_modules_dir = path.resolve(__dirname, '../node_modules');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var config = require('./config');
  
 module.exports = {
     entry: {
-        index:['./src/bundle/index/index.js','./src/bundle/index/index.css'],
-        //vendor:['./src/vendor/vue.js']
+    	index:['./src/js/index.js','./src/css/index.css'],
+        vender:['./src/js/common/flexible.js','./src/js/lib/zepto.js']
     },
     module: {
-        loaders:[
-        {
+		loaders:[
+         {
             test: /\.js$/,
             exclude: [node_modules_dir],
             loader: 'babel-loader'
@@ -21,24 +20,18 @@ module.exports = {
             test: /\.css$/,
             exclude: [node_modules_dir],
             loader: ExtractTextPlugin.extract('style', 'css')
-        }, 
-        {
-            test: /\.(svg|eot|ttf|woff)[\?\#]?/,
-            exclude: [node_modules_dir],
-            loader: 'file?name=font/[name].[ext]&publicPath=../'
-        },
-        {
+        }, {
             test: /\.(png|jpg)$/,
             exclude: [node_modules_dir],
-            loader: 'url?limit=250&name=images/[name].[ext]&publicPath=../'
+            loader: 'url?limit=25000&name=images/[name].[ext]'
         }]
     },
     output: {
-        path:config.distFolder,
+    	path:path.resolve(__dirname, "../dist"),
         filename: 'js/[name].js',　　//打包后的文件名
-        //publicPath:config.publicPath
+        publicPath:'/assets/'
     },
-    devtool: "#source-map",
+    //devtool: "#source-map",
     resolve: {
         extensions: ["", ".js"]
     },
@@ -47,11 +40,8 @@ module.exports = {
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(true),
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: "js/vendor.js"
-        }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"'
+            name: 'vender',
+            filename: "js/common.js"
         })
     ]
 };
