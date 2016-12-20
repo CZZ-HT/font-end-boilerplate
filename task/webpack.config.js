@@ -6,10 +6,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var config = require('./config');
  
 module.exports = {
-    entry: {
-        index:['./src/bundle/index/index.js','./src/bundle/index/index.css'],
-        //vendor:['./src/vendor/vue.js']
-    },
+    entry: config.entry,
     module: {
         loaders:[
         {
@@ -30,7 +27,7 @@ module.exports = {
         {
             test: /\.(png|jpg)$/,
             exclude: [node_modules_dir],
-            loader: 'url?limit=250&name=images/[name].[ext]&publicPath=../'
+            loader: 'url?limit=25000&name=images/[name].[ext]&publicPath=../'
         }]
     },
     output: {
