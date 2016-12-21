@@ -27,11 +27,9 @@ var env = {
         newscontent:['./src/bundle/newscontent/index.js','./src/bundle/newscontent/index.css'],
         orderconfirm:['./src/bundle/orderconfirm/index.js','./src/bundle/orderconfirm/index.css'],
         recommend:['./src/bundle/recommend/index.js','./src/bundle/recommend/index.css'],
-        withdrawal:['./src/bundle/withdrawal/index.js','./src/bundle/withdrawal/index.css']
-        //vendor:['./src/vendor/vue.js']
+        withdrawal:['./src/bundle/withdrawal/index.js','./src/bundle/withdrawal/index.css'],
+        //vendor:['./src/vendor/vue.common.js']
     }
 };
-
- 
 
 module.exports=env;

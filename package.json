@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "develop": "webpack-dev-server --config ./task/webpack.develop.js --hot --inline --display-error-details",
+    "develop": "webpack-dev-server --config ./task/webpack.develop.js --hot --inline --host 0.0.0.0 --display-error-details",
     "build": "webpack --config ./task/webpack.config.js --display-error-details",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,9 +23,14 @@
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.24.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-polyfill": "^6.20.0"
   }
 }

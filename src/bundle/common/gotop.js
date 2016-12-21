@@ -1,63 +1,44 @@
-var rAF = window.requestAnimationFrame	||
-	window.webkitRequestAnimationFrame	||
-	window.mozRequestAnimationFrame		||
-	window.oRequestAnimationFrame		||
-	window.msRequestAnimationFrame		||
-	function (callback) { 
-		setTimeout(callback, 1000 / 60);
-	};
-var cAF = window.cancelAnimationFrame
-    || window.webkitCancelAnimationFrame
-    || window.webkitCancelRequestAnimationFrame
-    || window.mozCancelRequestAnimationFrame
-    || window.oCancelRequestAnimationFrame
-    || window.msCancelRequestAnimationFrame
-    || clearTimeout;
+"use strict";
 
-function GoTop(dom,callback){
-	this.dom = dom;
-	this.name = dom.className;
-	this.bindEvent();
-}
+import handleScroll,{scrollToTop} from './scroll';
 
-GoTop.prototype.bindEvent = function(){
-	var timer = null,
-		scrollTop = 0,
-		dom = this.dom,
-		doc = document,
-		it = this,
-		docElement=doc.body,
-		pH=Math.ceil(window.innerHeight*.5);
- 	
- 	if(doc.documentElement.scrollTop){
-		docElement = doc.documentElement;
+/**
+ * 返回顶部
+ */
+
+class GoTop {
+    constructor(wrap) {
+    	var node = document.createElement('div');
+    	wrap = wrap || document.body;
+		node.className = 'back-to-top';
+		wrap.appendChild(node);
+		this.node = node;
+		node.addEventListener('click',this,false);
+		this.init();
+    }
+    handleEvent(e){
+		scrollToTop();
 	}
-	function step(){
-		var  speed=Math.floor(-scrollTop/10);
-		if(scrollTop==0){
-			cAF(timer);
-		}else{
-			timer = rAF(step);
-		}
-		docElement.scrollTop=scrollTop+speed;
+	show (e){
+		this.node.className ='back-to-top active';
 	}
 
-	dom.onclick=function(){
-		cAF(timer);
-		timer=rAF(step);
+	hide (e){
+		this.node.className ='back-to-top';
 	}
+
+	init (){
+		var H = Math.ceil(window.innerHeight*.5);
+		var self = this;
+		handleScroll(function(scrollTop){
+			if(scrollTop>H){
+				self.show();
+			}else{
+				self.hide();
+			}
+		})
+	}
+  }
+
+export default GoTop;
  
-	window.onscroll=function(){
-		scrollTop=parseInt(docElement.scrollTop);
-		if(scrollTop>pH){
-			dom.className = it.name +' active';
-		}else{
-			dom.className = it.name;
-		}
-		return scrollTop;
-	};
-}
-
-if (typeof(module) !== 'undefined') {
-    module.exports = GoTop;
-}

@@ -6,8 +6,9 @@ import GoTop from '../common/gotop';
 import Sortplan from './script/sort';
 
 function bootstrap(){
-	new Sortplan(document.getElementById('sort-nav'));
-	new GoTop(document.getElementById('gotop'));
+	var nav = document.getElementById('sort-nav');
+	new Sortplan(nav);
+	new GoTop();
 	document.querySelector('.goods-list').onclick=function(){
 		location.href="goods.html"
 	}

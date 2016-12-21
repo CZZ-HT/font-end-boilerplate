@@ -9,12 +9,11 @@ import Toolbar from './script/toolbar';
 import Collect from './script/collect';
 
 function bootstrap(){
-	new GoTop(document.getElementById('gotop'));
+	new GoTop();
 	
 	var mySwiper = new Swiper ('.swiper-container', {
 	    loop: true
 	});
-
 	var icon = document.getElementById('collect');
 	var bar = document.getElementById('pops-box');
 	var numbox = document.getElementById('number-box');

@@ -3,10 +3,23 @@ var path = require('path');
 var webpack = require('webpack');
 var node_modules_dir = path.resolve(__dirname, '../node_modules');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var config = require('./config');
+
+var entry = config.entry;
+var htmls = [];
+
+for(var key in entry){
+    htmls.push(new HtmlWebpackPlugin({
+        filename:key+'.html',
+        template:'./src/page/'+key+'.html',
+        chunks:[key,'vendor'],
+        hash:true
+    }))
+}
  
 module.exports = {
-    entry: config.entry,
+    entry: entry,
     module: {
         loaders:[
         {
@@ -35,11 +48,14 @@ module.exports = {
         filename: 'js/[name].js',　　//打包后的文件名
         //publicPath:config.publicPath
     },
-    devtool: "#source-map",
+    //devtool: "#source-map",
     resolve: {
         extensions: ["", ".js"]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"production"'
+        }),
         new ExtractTextPlugin("css/[name].css"),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(true),
@@ -47,8 +63,14 @@ module.exports = {
             name: 'vendor',
             filename: "js/vendor.js"
         }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"'
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
+            output: {
+              comments: false
+            },
+            sourceMap: false
         })
-    ]
+    ].concat(htmls)
 };

@@ -3,8 +3,20 @@ var path = require('path');
 var webpack = require('webpack');
 var node_modules_dir = path.resolve(__dirname, '../node_modules');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var config = require('./config');
- 
+var entry = config.entry;
+var htmls = [];
+
+for(var key in entry){
+    htmls.push(new HtmlWebpackPlugin({
+        filename:key+'.html',
+        template:'./src/page/'+key+'.html',
+        chunks:[key,'vendor'],
+        hash:false
+    }))
+}
+
 module.exports = {
     entry: config.entry,
     module: {
@@ -41,14 +53,9 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin("css/[name].css"),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurenceOrderPlugin(true),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             filename: "js/vendor.js"
-        }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"'
         })
-    ]
+    ].concat(htmls)
 };

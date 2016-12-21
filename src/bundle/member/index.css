@@ -226,15 +226,6 @@
     border: 1px solid #cccccc;
     color: #444;
 }
-.loadmsg {
-    text-align: center;
-    display: block;
-    vertical-align: top;
-    color: #565555;
-    padding: 0.25rem 0;
-    font-size: 0.375rem;
-    margin-bottom: 1.4rem;
-}
 
 .icon-heart-red {
     display: inline-block;
@@ -250,4 +241,13 @@
     width: 100%;
     background-image: url(../../asset/images/pages/charity.png);
     background-size: 100% 100%;
+}
+
+.active .icon-mine {
+    background-image: url(../../asset/images/pages/049_red.png);
+    background-size: 5.625rem 0.5625rem;
+}
+
+.loading {
+    margin-bottom: 1.35rem;
 }

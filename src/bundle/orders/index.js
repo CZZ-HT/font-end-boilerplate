@@ -6,7 +6,7 @@ import GoTop from '../common/gotop';
  
 
 function bootstrap(){
-	new GoTop(document.getElementById('gotop'));
+	new GoTop();
 }
  
 if(typeof window.addEventListener){

@@ -11,7 +11,8 @@ function bootstrap(){
 	    loop: true
 	});
 	new Sortplan(document.getElementById('sort-nav'));
-	new GoTop(document.getElementById('gotop'));
+	new GoTop();
+	
 	document.querySelector('.goods-list').onclick=function(){
 		location.href="goods.html";
 	}
