@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "develop": "webpack-dev-server --config ./task/webpack.develop.js --hot --inline --host 0.0.0.0 --display-error-details",
+    "develop": "webpack-dev-server --config ./task/webpack.develop.js --display-error-details",
     "build": "webpack --config ./task/webpack.config.js --display-error-details",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,6 +31,9 @@
   },
   "dependencies": {
     "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-polyfill": "^6.20.0"
+    "babel-polyfill": "^6.20.0",
+    "es6-promise": "^4.0.5",
+    "isomorphic-fetch": "^2.2.1",
+    "vue": "^2.1.6"
   }
 }

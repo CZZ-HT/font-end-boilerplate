@@ -17,7 +17,9 @@ for(var key in entry){
         hash:true
     }))
 }
- 
+
+//entry.vendor = ['zepto'];
+
 module.exports = {
     entry: entry,
     module: {
@@ -48,7 +50,6 @@ module.exports = {
         filename: 'js/[name].js',　　//打包后的文件名
         //publicPath:config.publicPath
     },
-    //devtool: "#source-map",
     resolve: {
         extensions: ["", ".js"]
     },
@@ -63,6 +64,7 @@ module.exports = {
             name: 'vendor',
             filename: "js/vendor.js"
         }),
+        new webpack.NoErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false

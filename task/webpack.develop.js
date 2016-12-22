@@ -17,8 +17,10 @@ for(var key in entry){
     }))
 }
 
+//entry.vendor = ['zepto'];
+
 module.exports = {
-    entry: config.entry,
+    entry: entry,
     module: {
         loaders:[
         {
@@ -47,7 +49,15 @@ module.exports = {
         filename: 'js/[name].js',　　//打包后的文件名
         publicPath:config.publicPath
     },
-    devtool: "#source-map",
+    devServer:{
+        contentBase: './dist',
+        devtool: 'eval',
+        hot: true,
+        inline: true,    
+        port: config.port,
+        host:config.host
+    },
+    //devtool: "#source-map",
     resolve: {
         extensions: ["", ".js"]
     },

@@ -1,6 +1,8 @@
 "use strict";
-function footer(index){
+
+function setActiveFoot(index){
 	var node = document.querySelector('.nav-bar');
 	node.children[index].className='active';
 }
-module.exports = footer;
+
+export default setActiveFoot;
