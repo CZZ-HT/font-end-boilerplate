@@ -50,7 +50,7 @@ module.exports = {
         publicPath:config.publicPath
     },
     devServer:{
-        contentBase: './dist',
+        contentBase:'./dist',
         devtool: 'eval',
         hot: true,
         inline: true,    
@@ -63,6 +63,7 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin("css/[name].css"),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             filename: "js/vendor.js"

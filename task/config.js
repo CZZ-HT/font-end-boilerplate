@@ -23,6 +23,8 @@ pages.forEach(function(page){
     entry[page]=['./src/bundle/'+page+'/index.js','./src/bundle/'+page+'/index.css'];
 });
 
+
+
 env.entry = entry;
 
 
