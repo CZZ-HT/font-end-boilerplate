@@ -4,21 +4,27 @@ var webpack = require('webpack');
 var node_modules_dir = path.resolve(__dirname, '../node_modules');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var config = require('./config');
+var env = require('./env.js');
+var config = require('./config.js');
+var _ = require('lodash');
 
-var entry = config.entry;
-var htmls = [];
+var entry = {};
+var pages = [];
 
-for(var key in entry){
-    htmls.push(new HtmlWebpackPlugin({
-        filename:key+'.html',
-        template:'./src/page/'+key+'.html',
-        chunks:[key,'vendor'],
-        hash:true
-    }))
-}
-
-//entry.vendor = ['zepto'];
+_.forEach(config,function(moduleObj,moduleName){
+    var entryJS = moduleObj.path+'index.js';
+    var entryCSS = moduleObj.path+'index.css';
+    var entryHTML = env.srcPath+'page/'+moduleName+'.html';
+    entry[moduleName] = [entryJS,entryCSS];
+    pages.push(new HtmlWebpackPlugin({
+        filename:moduleObj.html,
+        template:entryHTML,
+        chunks:moduleObj.chunk,
+        hash:false
+    }));
+});
+ 
+entry.vendor = [env.srcPath+'common/flexible.js']
 
 module.exports = {
     entry: entry,
@@ -46,7 +52,7 @@ module.exports = {
         }]
     },
     output: {
-        path:config.distFolder,
+        path:env.distFolder,
         filename: 'js/[name].js',　　//打包后的文件名
         //publicPath:config.publicPath
     },
@@ -59,11 +65,8 @@ module.exports = {
         }),
         new ExtractTextPlugin("css/[name].css"),
         new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.CommonsChunkPlugin('vendor','js/vendor.js'),
         new webpack.optimize.OccurenceOrderPlugin(true),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: "js/vendor.js"
-        }),
         new webpack.NoErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
@@ -74,5 +77,5 @@ module.exports = {
             },
             sourceMap: false
         })
-    ].concat(htmls)
+    ].concat(pages)
 };

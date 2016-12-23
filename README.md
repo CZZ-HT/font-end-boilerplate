@@ -22,8 +22,8 @@ Directory Structure
 src/
     |-- vendor/ #third party libraries like 'jquery'
     |-- asset/ #images,fonts and so on
+    |-- common/ #js in common use
     |-- bundle/
-        |-- common/ #css and js in common use
         |-- index/ #index page's bundle
             |-- script/ #partial js of index page
             |-- stylesheet/ #partial css of index page
@@ -34,8 +34,7 @@ src/
 dist/
     |-- images/
     |-- css/#dist css come here
-    |-- js #dist js come here
-    |-- common # common js 
+    |-- js/ #dist js come here
     |--index.html #dist index.html
     |-- .../ #more dist pages
 task/
@@ -48,6 +47,6 @@ task/
     |-- webpack.develop.js #compile source code and vendors for develop
     |-- webpack.production.js #compile source code and vendors for production
     |-- webpack.hot-update.js #compile source code and vendors for develop in HMR
-webpack.config.js # 
+server.js # 
 ```
 

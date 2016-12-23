@@ -1,11 +1,12 @@
 // require 加载 browser-sync 模块
 var bs = require("browser-sync").create();
-var config = require('./task/config.js');
+var env = require('./task/env.js');
 // .init 启动服务器
 bs.init({
-	proxy: {
-        target: "http://localhost:" + config.port,
-    },
+	// proxy: {
+ //        target: "http://192.168.1.122:" + env.port,
+ //    },
+ 	server:'./dist',
     baseDir:"./dist",
  
     files:["dist/css/*.css", "dist/js/*.js","dist/*.html"]
