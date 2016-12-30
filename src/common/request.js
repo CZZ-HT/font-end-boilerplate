@@ -1,4 +1,5 @@
 'use strict'
+require('es6-promise').polyfill();
 import fetch from "isomorphic-fetch";
 
 const defaultHost = `//localhost:${process.env.LISTEN_PORT || 8080}`

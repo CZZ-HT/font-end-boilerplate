@@ -24,6 +24,8 @@ _.forEach(config,function(moduleObj,moduleName){
     }));
 });
 
+entry.flexible = './src/common/flexible.js';
+
 module.exports = {
     entry: entry,
     module: {
@@ -38,6 +40,10 @@ module.exports = {
             exclude: [node_modules_dir],
             loader: ExtractTextPlugin.extract('style', 'css')
         }, 
+        {
+            test: /\.(htm|html)$/i,
+            loader:'html-withimg-loader?min=false'
+        },
         {
             test: /\.(svg|eot|ttf|woff)[\?\#]?/,
             exclude: [node_modules_dir],
@@ -60,7 +66,8 @@ module.exports = {
         hot: true,
         inline: true,    
         port: env.port,
-        host:env.host
+        host:env.host,
+        noInfo:true
     },
     //devtool: "#source-map",
     resolve: {
@@ -69,6 +76,15 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin("css/[name].css"),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.CommonsChunkPlugin('vendor','js/vendor.js')
+        new webpack.optimize.CommonsChunkPlugin({
+            name:'flexible',
+            filename:'js/flexible.js',
+            chunks:['flexible']
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name:'vendor',
+            filename:'js/vendor.js',
+            chunks:['index','choose','member']
+        })
     ].concat(pages)
 };

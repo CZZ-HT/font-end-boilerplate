@@ -1,8 +1,9 @@
-@import '../common/normalize.css';
-@import '../common/common.css';
-@import '../common/swiper.css';
-@import '../common/footer.css';
-@import '../common/gotop.css';
+
+@import '../../asset/base.css';
+@import '../../asset/footer.css';
+@import '../../asset/gotop.css';
+@import '../../asset/spinner.css';
+@import '../../asset/swiper.css';
 
 .container {
   width: 100%;

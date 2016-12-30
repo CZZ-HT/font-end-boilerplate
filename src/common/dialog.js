@@ -43,7 +43,7 @@ Dialog.prototype.createNode = function(message){
 	var container = document.createElement('div');
 	container.setAttribute('class','dialog-container');
 	var html = '<div class="dialog">'+
-					'<div class="dialog-head"><i data-event="n">x</i></div>'+
+					'<div class="dialog-head"></div>'+
 					'<div class="dialog-content">'+message+'</div>'+
 					'<div class="dialog-btns">'+
 						(this.onlyConfirm ? '<button data-event="y" class="only">'+this.confirmText+'</button>':
@@ -77,4 +77,4 @@ Dialog.tips = function(message,sec){
 	},sec||3000);
 }
 
-module.exports = Dialog;
+export default Dialog;

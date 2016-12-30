@@ -7,7 +7,7 @@ module.exports = {
     index: {
         html: "index.html",
         path: "./src/bundle/index/",
-        chunk: ["vendor","index"]
+        chunk: ["vendor","index","jquery"]
     },
     search: {
         html: "search.html",

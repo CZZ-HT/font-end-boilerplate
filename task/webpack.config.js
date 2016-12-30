@@ -23,8 +23,10 @@ _.forEach(config,function(moduleObj,moduleName){
         hash:false
     }));
 });
- 
-entry.vendor = [env.srcPath+'common/flexible.js']
+
+//entry.vendor = ['jquery']
+
+entry.flexible = './src/common/flexible.js';
 
 module.exports = {
     entry: entry,
@@ -39,14 +41,18 @@ module.exports = {
             test: /\.css$/,
             exclude: [node_modules_dir],
             loader: ExtractTextPlugin.extract('style', 'css')
-        }, 
+        },
+        {
+            test:/.html$/,
+            loader:'html-withimg-loader?min=false'
+        },
         {
             test: /\.(svg|eot|ttf|woff)[\?\#]?/,
             exclude: [node_modules_dir],
             loader: 'file?name=font/[name].[ext]&publicPath=../'
         },
         {
-            test: /\.(png|jpg)$/,
+            test: /\.(png|jpg|gif)$/,
             exclude: [node_modules_dir],
             loader: 'url?limit=25000&name=images/[name].[ext]&publicPath=../'
         }]
@@ -65,7 +71,16 @@ module.exports = {
         }),
         new ExtractTextPlugin("css/[name].css"),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.CommonsChunkPlugin('vendor','js/vendor.js'),
+        new webpack.optimize.CommonsChunkPlugin({
+            name:'flexible',
+            filename:'js/flexible.js',
+            chunks:['flexible']
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name:'vendor',
+            filename:'js/vendor.js',
+            chunks:['index','choose','member']
+        }),
         new webpack.optimize.OccurenceOrderPlugin(true),
         new webpack.NoErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({

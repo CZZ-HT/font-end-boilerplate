@@ -9,6 +9,7 @@
 		<meta http-equiv="Expires" content="-1">
     	<meta http-equiv="pragram" content="no-cache">
     	<meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    	<script src="js/flexible.js"></script>
 		<title>友阿微店</title>
 	</head>
 	<body>
@@ -160,7 +161,7 @@
 		<div class="active-box">
 			<p>——<span>最新上架</span>——</p>
 		</div>
-		<ul class="goods-list">
+		<ul id="goods-list" class="goods-list">
 			<li>
 				<a href="goods.html">
 					<span><img src="http://youam.yunyiwd.com/user_res/upload/temp/201610/13/6846254995879704478.jpg" alt=""></span>
@@ -198,7 +199,29 @@
 				</a>
 			</li>
 		</ul>
-		<a href="javascript:;" class="loading">正在加载中</a>
+		<div class="spinner-box">
+			<div class="spinner">
+		        <div class="spinner-container container1">
+		            <div class="circle1"></div>
+		            <div class="circle2"></div>
+		            <div class="circle3"></div>
+		            <div class="circle4"></div>
+		        </div>
+		        <div class="spinner-container container2">
+		            <div class="circle1"></div>
+		            <div class="circle2"></div>
+		            <div class="circle3"></div>
+		            <div class="circle4"></div>
+		        </div>
+		        <div class="spinner-container container3">
+		            <div class="circle1"></div>
+		            <div class="circle2"></div>
+		            <div class="circle3"></div>
+		            <div class="circle4"></div>
+		        </div>
+			</div>
+		    <div class="wait">加载中...</div>
+		</div>
 	</div>
 	<footer class="nav-bar">
 	    <a href="index.html" class="active">
