@@ -1,107 +1,24 @@
-module.exports = {
-	choose: {
-        html: "choose.html",
-        path: "./src/bundle/choose/",
-        chunk: ["choose","vendor"]
-    },
-    index: {
-        html: "index.html",
-        path: "./src/bundle/index/",
-        chunk: ["vendor","index","jquery"]
-    },
-    search: {
-        html: "search.html",
-        path: "./src/bundle/search/",
-        chunk: ["search","vendor"]
-    },
-    mystore:{
-        html: "mystore.html",
-        path: "./src/bundle/mystore/",
-        chunk: ["mystore","vendor"]
-    },
-    member:{
-        html: "member.html",
-        path: "./src/bundle/member/",
-        chunk: ["member","vendor"]
-    },
-    chuangke:{
-        html: "chuangke.html",
-        path: "./src/bundle/chuangke/",
-        chunk: ["chuangke","vendor"]
-    },
-    orders:{
-        html: "orders.html",
-        path: "./src/bundle/orders/",
-        chunk: ["orders","vendor"]
-    },
-    mywealth:{
-        html: "mywealth.html",
-        path: "./src/bundle/mywealth/",
-        chunk: ["mywealth","vendor"]
-    },
-    fans:{
-        html: "fans.html",
-        path: "./src/bundle/fans/",
-        chunk: ["fans","vendor"]
-    },
-    school:{
-        html: "school.html",
-        path: "./src/bundle/school/",
-        chunk: ["school","vendor"]
-    },
-    decorate:{
-        html: "decorate.html",
-        path: "./src/bundle/decorate/",
-        chunk: ["decorate","vendor"]
-    },
-    goods:{
-        html: "goods.html",
-        path: "./src/bundle/goods/",
-        chunk: ["goods","vendor"]
-    },
-    orderdetails:{
-        html: "orderdetails.html",
-        path: "./src/bundle/orderdetails/",
-        chunk: ["orderdetails","vendor"]
-    },
-    charity:{
-        html: "charity.html",
-        path: "./src/bundle/charity/",
-        chunk: ["charity","vendor"]
-    },
-    collection:{
-        html: "collection.html",
-        path: "./src/bundle/collection/",
-        chunk: ["collection","vendor"]
-    },
-    invite:{
-        html: "invite.html",
-        path: "./src/bundle/invite/",
-        chunk: ["invite","vendor"]
-    },
-    logistics:{
-        html: "logistics.html",
-        path: "./src/bundle/logistics/",
-        chunk: ["logistics","vendor"]
-    },
-    newscontent:{
-        html: "newscontent.html",
-        path: "./src/bundle/newscontent/",
-        chunk: ["newscontent","vendor"]
-    },
-    orderconfirm:{
-        html: "orderconfirm.html",
-        path: "./src/bundle/orderconfirm/",
-        chunk: ["orderconfirm","vendor"]
-    },
-    recommend:{
-        html: "recommend.html",
-        path: "./src/bundle/recommend/",
-        chunk: ["recommend","vendor"]
-    },
-    withdrawal:{
-        html: "withdrawal.html",
-        path: "./src/bundle/withdrawal/",
-        chunk: ["withdrawal","vendor"]
-    },
+module.exports =  {
+    index:['./src/bundle/index/index.js','./src/bundle/index/index.css'],
+    choose:['./src/bundle/choose/index.js','./src/bundle/choose/index.css'],
+    search:['./src/bundle/search/index.js','./src/bundle/search/index.css'],
+    mystore:['./src/bundle/mystore/index.js','./src/bundle/mystore/index.css'],
+    member:['./src/bundle/member/index.js','./src/bundle/member/index.css'],
+    chuangke:['./src/bundle/chuangke/index.js','./src/bundle/chuangke/index.css'],
+    orders:['./src/bundle/orders/index.js','./src/bundle/orders/index.css'],
+    mywealth:['./src/bundle/mywealth/index.js','./src/bundle/mywealth/index.css'],
+    fans:['./src/bundle/fans/index.js','./src/bundle/fans/index.css'],
+    school:['./src/bundle/school/index.js','./src/bundle/school/index.css'],
+    decorate:['./src/bundle/decorate/index.js','./src/bundle/decorate/index.css'],
+    goods:['./src/bundle/goods/index.js','./src/bundle/goods/index.css'],
+    orderdetails:['./src/bundle/orderdetails/index.js','./src/bundle/orderdetails/index.css'],
+    charity:['./src/bundle/charity/index.js','./src/bundle/charity/index.css'],
+    collection:['./src/bundle/collection/index.js','./src/bundle/collection/index.css'],
+    invite:['./src/bundle/invite/index.js','./src/bundle/invite/index.css'],
+    logistics:['./src/bundle/logistics/index.js','./src/bundle/logistics/index.css'],
+    newscontent:['./src/bundle/newscontent/index.js','./src/bundle/newscontent/index.css'],
+    orderconfirm:['./src/bundle/orderconfirm/index.js','./src/bundle/orderconfirm/index.css'],
+    recommend:['./src/bundle/recommend/index.js','./src/bundle/recommend/index.css'],
+    withdrawal:['./src/bundle/withdrawal/index.js','./src/bundle/withdrawal/index.css'],
+    vendor:'./src/bundle/common/*.js'
 }

@@ -1,10 +1,10 @@
 "use strict";
-import request from "../../common/request";
-import Swiper from  '../../common/swiper';
-import GoTop from '../../common/gotop';
-import setActiveFoot from  '../../common/footer';
-import {scrollLoad} from '../../common/scroll';
-import spinner from '../../common/spinner';
+import request from "../common/request";
+import Swiper from  '../common/swiper';
+import GoTop from '../common/gotop';
+import setActiveFoot from  '../common/footer';
+import {scrollLoad} from '../common/scroll';
+import spinner from '../common/spinner';
  
 var lock = false;
 

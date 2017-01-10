@@ -1,9 +1,9 @@
 
-@import '../../asset/base.css';
-@import '../../asset/footer.css';
-@import '../../asset/gotop.css';
-@import '../../asset/spinner.css';
-@import '../../asset/swiper.css';
+@import '../../assets/css/base.css';
+@import '../../assets/css/footer.css';
+@import '../../assets/css/gotop.css';
+@import '../../assets/css/spinner.css';
+@import '../../assets/css/swiper.css';
 
 .container {
   width: 100%;
@@ -37,7 +37,7 @@ header {
   left: 6%;
   bottom: 32%;
   border: none;
-  background: url("../../asset/images/pages/022.png") no-repeat 0 0;
+  background: url("../../assets/images/pages/022.png") no-repeat 0 0;
   background-size: 100% 100%;
 }
 .search-box input {
