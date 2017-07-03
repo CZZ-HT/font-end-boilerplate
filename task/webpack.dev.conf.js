@@ -1,58 +1,52 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var node_modules_dir = path.resolve(__dirname, '../node_modules');
-var env = require('./env.js');
-var htmlPlugins = env.htmlPlugins;
-
+ 
 module.exports = {
-    entry: require('./config.js'),
+    entry: {
+        home:['webpack-hot-middleware/client?noInfo=true&reload=true','./src/home.es6']
+    },
     module: {
-        loaders:[
-        {
-            test: /\.js$/,
-            exclude: [node_modules_dir],
-            loader: 'babel-loader'
-        },
-        {
-            test: /\.html$/,
-            loader: 'html-loader?minimize=false'
-        },
-        {
-            test: /\.css$/,
-            exclude: [node_modules_dir],
-            loader: 'style!css'
-        },
-        {
-            test: /\.(svg|eot|ttf|woff)[\?\#]?/,
-            exclude: [node_modules_dir],
-            loader: 'file?name=font/[name].[ext]'
-        },
-        {
-            test: /\.(png|jpg|gif)$/,
-            exclude: [node_modules_dir],
-            loader: 'url?limit=25000&name=images/[name].[ext]'
-        }]
+        rules:[
+            {
+                test: /\.es6$/,
+                exclude: [node_modules_dir],
+                include: [
+                  path.resolve(__dirname,"../src")
+                ],
+                loader: "babel-loader",
+            },{
+                test:/\.css/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    }
+                ]
+            }
+        ]
     },
-    devtool: '#eval-source-map',
+    //devtool: '#eval-source-map',
     output: {
-        path: env.assetsRoot,
-        filename: 'js/[name].js',　　//打包后的文件名
-        publicPath:'/assets/'
-    },
-    resolve: {
-        extensions: ['', '.js', '.vue', '.json'],
-        alias: {
-          'vue$': 'vue/dist/vue.common.js',
-        }
+        path: path.resolve(__dirname,"../dist"),
+        filename: 'js/[name][hash:7].js',
+        //libraryTarget: "umd", // universal module definition
+        publicPath:'/'
     },
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"development"'
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname,'../src/home.html')
         }),
-        new webpack.optimize.CommonsChunkPlugin('vendor','js/vendor.js'),
-        new webpack.optimize.OccurenceOrderPlugin(true),
-        new webpack.NoErrorsPlugin()
-    ].concat(htmlPlugins)
+        new webpack.HotModuleReplacementPlugin() // Enable HMR
+    ],
 }
  

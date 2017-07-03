@@ -1,6 +1,10 @@
 # font-end-boilerplate
 前端自动化构建模版
 
+## Useage
+```bash
+    npm run start
+```
 <ul>
   <li>实现热替换</li>
   <li>自动补全css私有前缀</li>

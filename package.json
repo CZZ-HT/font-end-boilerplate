@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "develop": "webpack-dev-server --config ./task/webpack.dev.conf.js --hot --inline",
-    "release": "webpack --config ./task/webpack.prod.conf.js --display-error-details",
+    "build": "webpack --config ./task/webpack.dev.conf.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -14,28 +13,23 @@
     "shop"
   ],
   "author": "frog",
+  "repository": "https://github.com/bjtqti/font-end-boilerplate.git",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.20.0",
-    "babel-loader": "^6.2.9",
-    "babel-preset-es2015": "^6.18.0",
-    "browser-sync": "^2.18.5",
-    "css-loader": "^0.26.1",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.9.0",
-    "html-loader": "^0.4.4",
-    "html-webpack-plugin": "^2.24.1",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.5.2",
+    "css-loader": "^0.28.4",
+    "express": "^4.15.3",
+    "html-webpack-plugin": "^2.29.0",
+    "postcss-loader": "^2.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.0.0",
+    "webpack-dev-middleware": "^1.11.0",
+    "webpack-hot-middleware": "^2.18.0"
   },
   "dependencies": {
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "es6-promise": "^4.0.5",
-    "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.17.2",
-    "vue": "^2.1.6",
-    "vue-router": "^2.1.1"
+    "babel-plugin-transform-runtime": "^6.15.0"
   }
 }
