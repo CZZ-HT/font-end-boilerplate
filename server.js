@@ -7,7 +7,7 @@ var compiler = webpack(webpackConfig);
 
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
-	contentBase: webpackConfig.output.path,
+	  contentBase: webpackConfig.output.path,
   	publicPath: webpackConfig.output.publicPath,
   	//hot: true,
     //stats: { colors: true },
