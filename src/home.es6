@@ -19,5 +19,5 @@ window.addEventListener('DOMContentLoaded',function(e){
 
 
 var bootstrap = ()=>{
-	append('Hello World !')
+	append('Hello World!')
 }

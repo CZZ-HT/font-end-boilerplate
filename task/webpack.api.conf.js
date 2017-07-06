@@ -5,7 +5,7 @@ var node_modules_dir = path.resolve(__dirname, '../node_modules');
  
 module.exports = {
     entry: {
-        home:['./src/home.es6']
+        home:['webpack-hot-middleware/client?noInfo=true&reload=true','./src/home.es6']
     },
     module: {
         rules:[
@@ -34,14 +34,6 @@ module.exports = {
                 ]
             }
         ]
-    },
-    devServer: {
-      contentBase: path.join(__dirname, "../dist"),
-      compress: true,
-     // host:'192.168.1.133',
-      hot:true,
-      quiet:true,
-      port: 9000
     },
     //devtool: '#eval-source-map',
     output: {

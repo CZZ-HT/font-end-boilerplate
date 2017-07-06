@@ -2,7 +2,7 @@ var express = require("express");
 var webpack = require("webpack");
 var path = require('path')
 var app = express();
-var webpackConfig = require("./task/webpack.dev.conf.js");
+var webpackConfig = require("./task/webpack.api.conf.js");
 var compiler = webpack(webpackConfig);
 
 
