@@ -3,6 +3,7 @@
 
 ## Useage
 ```bash
+	npm install
     npm run start
 ```
 <ul>

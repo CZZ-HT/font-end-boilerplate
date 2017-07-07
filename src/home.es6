@@ -1,23 +1,18 @@
 "use strict";
 
 import './style.css';
+import {append} from './hello.es6';
 
 if (module.hot) {
-  //module.hot.accept()
+  module.hot.accept('./hello.es6',function(e){
+  	console.log('ssssssaaa')
+  })
 }
 
-var append = (str)=>{
-	let app = document.getElementById('app');
-	let head = document.createElement('header');
-	head.innerHTML = str+Date.now();
-	app.appendChild(head);
+var bootstrap = ()=>{
+	append('Hello World!');
 }
 
 window.addEventListener('DOMContentLoaded',function(e){
 	bootstrap();
 },false);
-
-
-var bootstrap = ()=>{
-	append('Hello World!')
-}
