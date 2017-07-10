@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var node_modules_dir = path.resolve(__dirname, '../node_modules');
- 
+var CleanWebpackPlugin = require('clean-webpack-plugin');
  
 
 module.exports = {
@@ -34,6 +34,9 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin({
             filename: "css/[name].[contenthash].css"
+        }),
+        new CleanWebpackPlugin("dist",{
+            root:path.resolve(__dirname,"..")
         }),
         new webpack.optimize.UglifyJsPlugin()
     ],

@@ -1,3 +1,7 @@
+html,body {
+	height: 100%;
+}
+
 #app {
 	display: flex;
 	align-items: center;
@@ -10,5 +14,5 @@ header {
 	width: 100%;
 	font-size: 1rem;
 	text-align: center;
-	color: red;
+	color: green;
 }
