@@ -29,7 +29,7 @@ module.exports = {
         path: path.resolve(__dirname,"../dist"),
         filename: 'js/[name][hash:7].js',
         //libraryTarget: "umd", // universal module definition
-        publicPath:'http://www.a.com/assets/'
+        publicPath:'/'
     },
     plugins: [
         new ExtractTextPlugin({
@@ -37,6 +37,9 @@ module.exports = {
         }),
         new CleanWebpackPlugin("dist",{
             root:path.resolve(__dirname,"..")
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+                names:['manifest']
         }),
         new webpack.optimize.UglifyJsPlugin()
     ],
