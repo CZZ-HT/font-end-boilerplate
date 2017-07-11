@@ -2,51 +2,54 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var node_modules_dir = path.resolve(__dirname, '../node_modules');
- 
-module.exports = {
-    entry: {
-        home:['webpack-hot-middleware/client?noInfo=true&reload=true','./src/home.es6']
-    },
+var merge = require('webpack-merge');
+var config = require('./webpack.base.conf');
+
+// add hot-reload related code to entry chunks
+Object.keys(config.entry).forEach(function (name) {
+    config.entry[name] = ['./task/client.es6'].concat(config.entry[name])
+});
+
+module.exports = merge(config, {
+    
     module: {
         rules:[
-            {
-                test: /\.es6$/,
-                exclude: [node_modules_dir],
-                include: [
-                  path.resolve(__dirname,"../src")
-                ],
-                loader: "babel-loader",
-            },{
-                test:/\.css/,
-                use: [
-                    {
-                        loader: 'style-loader',
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader'
+        {
+            test:/\.css/,
+            use: [
+                {
+                    loader: 'style-loader',
+                },
+                {
+                    loader: 'css-loader',
+                    options: {
+                        importLoaders: 1,
                     }
-                ]
-            }
+                }
+            ]
+        }
         ]
     },
-    //devtool: '#eval-source-map',
     output: {
         path: path.resolve(__dirname,"../dist"),
-        filename: 'js/[name][hash:7].js',
+        filename: 'js/[name].js',
         //libraryTarget: "umd", // universal module definition
         publicPath:'/'
     },
+      // cheap-module-eval-source-map is faster for development
+    devtool: '#cheap-module-eval-source-map',
     plugins: [
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname,'../src/home.html')
+        new webpack.DefinePlugin({
+          'process.env': '"development"'
         }),
-        new webpack.HotModuleReplacementPlugin() // Enable HMR
-    ],
-}
- 
+        // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
+        new webpack.HotModuleReplacementPlugin(),
+        //new webpack.NoEmitOnErrorsPlugin(),
+        // https://github.com/ampedandwired/html-webpack-plugin
+        new HtmlWebpackPlugin({
+            filename:'home.html',
+            template: path.resolve(__dirname,'../src/home.html'),
+            inject: true
+        })
+    ]
+});

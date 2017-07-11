@@ -1,6 +1,6 @@
 "use strict";
 
-import './style.css';
+require('./style.css');
 import {append} from './hello.es6';
 
 // if (module.hot) {
@@ -11,6 +11,7 @@ import {append} from './hello.es6';
 
 var bootstrap = ()=>{
 	append('Hello World!');
+	console.log('ss')
 }
 
 window.addEventListener('DOMContentLoaded',function(e){

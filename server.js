@@ -9,7 +9,7 @@ var compiler = webpack(webpackConfig);
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
 	  contentBase: webpackConfig.output.path,
   	publicPath: webpackConfig.output.publicPath,
-  	//hot: true,
+  	hot: true,
     //stats: { colors: true },
   	quiet: true
 })
@@ -17,7 +17,7 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
 	//lazy: true,
 	//path:'/hmr',
-	log: () => {}
+	//log: () => {}
 })
 
 // force page reload when html-webpack-plugin template changes
