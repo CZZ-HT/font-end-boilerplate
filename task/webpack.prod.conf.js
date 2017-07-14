@@ -24,7 +24,7 @@ module.exports = merge(config, {
     output: {
         filename: 'js/[name]-[hash:8].js',
         //libraryTarget: "umd", // universal module definition
-        publicPath:'/'
+        //publicPath:'./'
     },
     devtool: '#source-map',
     plugins: [
@@ -49,6 +49,6 @@ module.exports = merge(config, {
             template: path.resolve(__dirname,'../src/home.html')
             ,minify:false
         }),
-        new webpack.optimize.UglifyJsPlugin()
+        //new webpack.optimize.UglifyJsPlugin()
     ]
 });

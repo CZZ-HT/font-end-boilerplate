@@ -16,3 +16,9 @@ header {
 	text-align: center;
 	color: green;
 }
+
+.qr-code {
+	width: 300px;
+	height: 400px;
+	background:url(./assets/images/1_03.png) no-repeat top center;
+}

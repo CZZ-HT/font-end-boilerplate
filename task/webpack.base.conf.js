@@ -26,8 +26,8 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
-          name: path.posix.join(__dirname,'../dist/img/[name].[hash:7].[ext]')
+          limit: 1000,
+          name: 'img/[name].[hash:7].[ext]'
         }
       },
       {
@@ -35,7 +35,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: path.posix.join(__dirname,'../dist/fonts/[name].[hash:7].[ext]')
+          name: 'fonts/[name].[hash:7].[ext]'
         }
       }
     ]
